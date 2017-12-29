@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Demo: Using _TemplatedMixin</h1>
+        <div data-dojo-type="js/SomeWidget" data-dojo-props="title:'Our Some Widget'">
+            <div>Don't forget to click on the title!</div>
+            <p>This is arbitrary content!</p>
+            <button data-dojo-type="dijit/form/Button">My Button</button>
+            <p>More arbitrary content!</p>
+        </div>
+        <script>
+            // See the using Custom Modules with a CDN Tutorial for more
+            // information on configuring Dojo for CDN usage
+            var dojoConfig = {
+                async: true,
+                dojoBlankHtmlUrl: location.pathname.replace(/\/[^/]+$/, "") + "/blank.html",
+                packages: [{
+                        name: "js",
+                        location: location.pathname.replace(/\/[^/]+$/, "") + "/js"
+                    }]
+            };
+        </script>
+        <!-- load dojo -->
+        <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.3/dojo/dojo.js"></script>
+        <script>
+            require([
+                "dojo/parser",
+                "js/SomeWidget",
+                "dijit/form/Button"
+            ], function (parser) {
+                // Invoke the dojo/parser
+                parser.parse();
+            });
+        </script>
+    </body>
+</html>
